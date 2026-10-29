@@ -53,6 +53,13 @@ Important : sans configuration Supabase, le site reste en mode démo autonome av
 
 Le site prévoit un accès administrateur sécurisé uniquement si les variables Supabase sont correctement configurées. Les routes admin doivent être protégées côté server et les clés de service ne doivent jamais être exposées au navigateur.
 
+Le projet inclut maintenant :
+- `lib/supabase.ts` pour le client public
+- `lib/supabase-admin.ts` pour l’usage serveur sécurisé
+- `middleware.ts` pour protéger les routes `/admin/*`
+- `app/admin/login/page.tsx` pour la connexion admin
+- `app/admin/layout.tsx` pour le contrôle d’accès
+
 ## Démonstration locale
 
 Le fonctionnement actuel du MVP est basé sur une démonstration locale qui garde le panier dans le navigateur et présente des prix fictifs. Les éléments de paiement, livraison, et SMS/WhatsApp ne doivent pas être présentés comme actifs tant qu'ils ne sont pas réellement configurés.
