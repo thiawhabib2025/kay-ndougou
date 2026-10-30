@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 
+import { useCart } from "@/components/cart-provider";
 import { formatXOF, formatKg, formatGrams } from "@/lib/format";
 import type { Product } from "@/lib/types";
 
 export function ProductCard({ product }: { product: Product }) {
+  const { addToCart } = useCart();
+
   return (
     <article className="overflow-hidden rounded-[28px] border border-[#14532D]/10 bg-white shadow-sm shadow-[#14532D]/5 transition hover:-translate-y-1 hover:shadow-lg">
       <div className="relative">
@@ -35,9 +40,13 @@ export function ProductCard({ product }: { product: Product }) {
           <Link href={`/legumes/${product.slug}`} className="flex-1 rounded-full border border-[#14532D]/20 px-4 py-2.5 text-center text-sm font-semibold text-[#14532D] transition hover:bg-[#14532D]/5">
             Voir
           </Link>
-          <Link href={`/legumes/${product.slug}`} className="flex-1 rounded-full bg-[#14532D] px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-[#0f3c23]">
+          <button
+            type="button"
+            onClick={() => addToCart(product, 0.25)}
+            className="flex-1 rounded-full bg-[#14532D] px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0f3c23]"
+          >
             Ajouter
-          </Link>
+          </button>
         </div>
       </div>
     </article>
